@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Matias Garcia Design</title>
   <meta name="description" content="This is my personal site where I will publish the most relevant work I have made plus projects, ideas, photos and experiences. Hope you enjoy it.">
   <meta name="keywords" content="web design, responsive design, interface design, adaptive web, mobile, modern, creative, user interface design, user experience, intuitive user interface, design principles, front-end development, front-end web design, UX design, UI design, user-centered design, UX/UI principles, usability testing, user research.
@@ -10,6 +10,7 @@
   <meta name="author" content="Matias Garcia designer">
   <link rel="canonical" href="https://www.mgarcia.design">
   <link rel="stylesheet" type="text/css" href="css/my_styles.css">
+  <link rel="stylesheet" type="text/css" href="css/nav_styles.css">
   <!-- Owl Carousel CSS -->
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
@@ -19,6 +20,22 @@
   <script>
     tailwind.config = {
       theme: {
+        screens: {
+            'xs': '480px',
+            // => @media (min-width: 480px) { ... }
+
+            'sm': '640px',
+            // => @media (min-width: 576px) { ... }
+
+            'md': '768px',
+            // => @media (min-width: 960px) { ... }
+
+            'lg': '1024px',
+            // => @media (min-width: 1440px) { ... }
+
+            'xl': '1280px',
+            // => @media (min-width: 1440px) { ... }
+        },
         extend: {
           colors: {
             'mine_shaft': '#242323',
@@ -33,6 +50,7 @@
             'camelot_colour_dark': '#3e192f',
             'camelot_colour': '#7C325E',
             'snow_white': '#F9F9F9',
+            'accent' :'#FEE088',
           }
         }
       }
@@ -88,61 +106,98 @@
       }
     });
   </script>
+  <script>
+    jQuery(document).ready(function() {
+    jQuery('.toggle-nav').click(function(e) {
+        jQuery(this).toggleClass('active');
+        jQuery('.menu ul').toggleClass('active');
+            e.preventDefault();
+        });
+    });
+  </script>
   
 </head>
 <body class="dark:bg-emperor">
   <header class="text-snow_white"
           id="header">
-    <nav class="px-6 lg:px-12 xl:px-24 h-24
+    <nav class="menu px-6 lg:px-24 h-24
                 flex items-center gap-4">
-      <a id="logo_container"
-         href="#top"
-         class="w-32 mr-4 lg:mr-12">
-        <img src="resources/logo_gmd.svg">
-      </a>
-      <ul id="links"
-          class="flex gap-6 text-snow_white flex-grow">
-        <a href="#who_i_am"
-           class="uppercase font-bold tracking-wide p-1 lg:p-2 whitespace-nowrap">
-           <span class="hidden md:block">Who I am</span>
-           <span class="block md:hidden">Me</span>
-          </a>
-        <a href="#my_work"
-           class="uppercase font-bold tracking-wide p-1 lg:p-2 whitespace-nowrap">My Work</a>
-        <a href="#my_path"
-           class="uppercase font-bold tracking-wide p-1 lg:p-2 whitespace-nowrap">My Path</a>
-        <a href="#my_photos"
-           class="uppercase font-bold tracking-wide p-1 lg:p-2 whitespace-nowrap">Photos</a>
-      </ul>
-      <button type="button" 
-              onclick="location.href='https://www.linkedin.com/in/matias-garcia-23516325/?original_referer='"
-              class="inline-block rounded px-2.5 lg:px-6 pt-2.5 pb-2 text-xs font-semibold uppercase leading-normal 
-                       bg-snow_white text-comet_colour shadow-md transition duration-150 ease-in-out whitespace-nowrap
-                       hover:bg-mercury hover:shadow-lg focus:bg-mercury focus:shadow-lg focus:outline-none focus:ring-0 
-                       active:bg-mercury active:shadow-lg
-                       dark:bg-mercury 
-                       dark:hover:bg-mine_shaft dark:hover:text-mercury 
-                       dark:focus:bg-mine_shaft dark:focus:text-mercury 
-                       dark:active:bg-mine_shaft dark:active:text-mercury" 
-              data-te-ripple-init="" 
-              data-te-ripple-color="light">Contact me</button>
-    </nav>
+        
+        <a id="logo_container"
+            href="#top"
+            class="flex-grow md:flex-grow-0 mr-6">
+            <object data="resources/logo_gmd.svg"
+                    height="60px"></object>
+        </a>
+        <a class="toggle-nav rounded px-2.5 lg:px-6 pt-1.5 pb-2 text-base 
+                  bg-snow_white text-emperor shadow-lg
+                  hover:bg-silver_chalice hover:text-emperor hover:shadow-lg
+                  active:bg-silver_chalice active:text-emperor active:shadow-lg
+                  transition duration-150 ease-in-out mr-5" 
+            href="#">&#9776;</a>
+
+        <ul class="active flex absolute p-4 pl-12 text-right
+                   flex-col top-20 right-12 bg-mine_shaft rounded shadow-lg
+                   md:static md:gap-8 md:flex-grow md:flex-row md:text-left md:shadow-none md:p-0 md:items-center md:bg-transparent">
+            <li class="current-item">
+                <a href="#who_i_am"
+                  class="p-2 block uppercase font-bold tracking-wide whitespace-nowrap hover:text-accent transition-all">Who I am</a>
+            </li>
+            <li>
+                <a href="#my_work"
+                class="p-2 block uppercase uppercase font-bold tracking-wide whitespace-nowrap hover:text-accent transition-all">My Work</a>
+            </li>
+            <li>
+                <a href="#my_path"
+                class="p-2 block uppercase font-bold tracking-wide whitespace-nowrap hover:text-accent transition-all">My Path</a>
+            </li>
+            <li>
+                <a href="#my_photos"
+                class="p-2 block uppercase font-bold tracking-wide whitespace-nowrap hover:text-accent transition-all">Photos</a>
+            </li>
+            <li class="md:hidden inline">
+                <a href="https://www.linkedin.com/in/matias-garcia-23516325/?original_referer='"
+                   class="p-2 block uppercase font-bold tracking-wide whitespace-nowrap hover:text-accent transition-all">Contact me</a>
+            </li>
+        </ul>
+        <div class="contact-box float-right inline-block">
+            <button type="button" 
+                    onclick="location.href='https://www.linkedin.com/in/matias-garcia-23516325/?original_referer='"
+                    class="rounded px-2.5 lg:px-6 pt-2.5 pb-2 text-xs font-semibold uppercase leading-normal 
+                           bg-snow_white text-comet_colour shadow-md transition duration-150 ease-in-out whitespace-nowrap
+                           hover:bg-mercury hover:shadow-lg focus:bg-mercury focus:shadow-lg focus:outline-none focus:ring-0 
+                           active:bg-mercury active:shadow-lg
+                           dark:bg-mercury 
+                           dark:hover:bg-mine_shaft dark:hover:text-mercury 
+                           dark:focus:bg-mine_shaft dark:focus:text-mercury 
+                           dark:active:bg-mine_shaft dark:active:text-mercury
+                           hidden md:inline-block" 
+                    data-te-ripple-init="" 
+                    data-te-ripple-color="light">
+                    <span class="hidden lg:inline-block">Contact me</span>
+                    <object data="resources/mail.svg"
+                            class="h-4 w-4 inline-block lg:hidden"></object>
+                </button>
+        </div>
+        
+    </nav>    
     <div class="header_container antialiased
-                w-full pt-14 px-24 pb-0">
-
-      <h1 class="pt-24 pb-6 
-                 text-6xl font-black
-                 leading-snug">
-        <img src="resources/bulb_draw.png"
-              class="drop-shadow-md float-right w-32 lg:w-48">
-        Designing effective communication through creative ideas.</h1>
-      <p class="text-xl leading-normal font-semibold 
-                flex flex-col-reverse gap-4 lg:inline xl:w-10/12">
-        <img src="resources/pencil_draw.png"
-             class="drop-shadow-md float-right w-48">
-        Every piece of communication, from the most basic brochure to the spoken word, has an impact and influence. <br/>Therefore, striving for constant improvement is essential.
-      </p>
-
+                w-full pt-14 px-6 md:px-12 lg:px-24 pb-0">
+        <h1 class="pt-24 pb-6 
+                   text-4xl sm:text-5xl md:text-6xl font-black
+                   !leading-tight">
+            <img src="resources/bulb_draw.png"
+                 class="drop-shadow-md float-right w-32 lg:w-48 hidden xs:inline">Designing effective communication through creative ideas.</h1>
+        <p class="text-lg md:text-xl leading-normal font-semibold 
+                  flex flex-col-reverse gap-4 lg:inline w-full xs:w-10/12">
+            <span class="float-right xs:inline-block">
+                <img src="resources/bulb_draw.png"
+                    class="drop-shadow-md float-left w-16 xs:hidden mr-8">
+                <img src="resources/pencil_draw.png"
+                     class="drop-shadow-md w-24 xs:w-48 float-left">
+                
+            </span>Every piece of communication, from the most basic brochure to the spoken word, has an impact and influence. <br/>Therefore, striving for constant improvement is essential.
+        </p>
     </div>
     <div class="shape-divider 
                 dark:brightness-90">
@@ -160,18 +215,18 @@
     <section id="who_i_am"
              class="text-comet_colour bg-snow_white
                     antialiased 
-                    w-full pt-8 pb-24 px-10 xl:px-24 xl:pt-14 
+                    w-full pt-8 pb-24 xl:pt-14 px-6 lg:px-24
                     dark:brightness-90">
       <h2 class="pb-6 hidden lg:block
-                 text-6xl font-black  
+                 lg:text-6xl font-black  
                  leading-snug text-center">Who I am</h2>
       <div class="w-full flex gap-2 flex-col-reverse lg:flex-row">
-        <p class="text-xl leading-normal w-full flex-grow">I was born in a region located between the 36th parallel south and the 61st meridian west. My childhood was full of joy and excitement, thanks to the beautiful surroundings of Bolívar, the place where I grew up. Even though I no longer live there, it will always hold a special place in my heart.<br/>
+        <p class="text-lg md:text-xl leading-normal w-full flex-grow">I was born in a region located between the 36th parallel south and the 61st meridian west. My childhood was full of joy and excitement, thanks to the beautiful surroundings of Bolívar, the place where I grew up. Even though I no longer live there, it will always hold a special place in my heart.<br/>
           It was during my time in the city of La Plata that I not only gained the knowledge and skills that have made me the professional I am today, but also met my life partner. She has given me more than I could ever ask for, and I am grateful for her every day.<br/>
           Now, more than 10 years later, I find myself living in Dresden, Germany, with my two incredible daughters. I am not the greatest soccer player, but I enjoy playing nonetheless. My passion for photography has grown over the years, and I am constantly striving to improve in all aspects of my life.<br/>
           This is just a glimpse into who I am. There is much more to discover, and I look forward to sharing it with you.
         </p>
-        <h2 class="py-2 text-6xl font-black  
+        <h2 class="py-2 text-5xl font-black  
                   leading-snug text-center inline lg:hidden">Who I am</h2>
         <div class="img_container w-full text-center md:basis-4/12 lg:basis-3/12">
           <img src="resources/me_photo.jpg" 
@@ -184,9 +239,9 @@
              class="bg-camelot_colour text-snow_white
                     dark:bg-camelot_colour_dark dark:text-mercury
                     antialiased text-center
-                    w-full py-14 px-10 xl:px-24">
+                    w-full py-14 px-6 lg:px-24">
       <h2 class="pb-6 
-                 text-6xl font-black
+                 text-5xl lg:text-6xl font-black
                  leading-snug text-center">My Work</h2>
       <p class="text-xl leading-normal w-full text-center">Most of the work I completed for Scionics cannot be published due to legal reasons. <br/>However, you can view a few promotional pieces along with some older works.</p>
       <div class="antialiased text-center
@@ -312,13 +367,13 @@
              class="text-comet_colour bg-snow_white
                     dark:bg-mine_shaft dark:text-mercury
                     antialiased
-                    w-full py-14 px-10 xl:px-24">
+                    w-full py-14 px-6 lg:px-24">
       <h2 class="pb-6 
-                 text-6xl font-black
+                 text-5xl lg:text-6xl font-black
                  leading-snug text-center">My Path</h2>
       <p class="text-xl leading-normal w-full text-center">In brief, I would like to highlight the most relevant points since I began studying Design in La Plata, Argentina.</p>
       <!-- The Timeline -->
-      <ul class="timeline my-4 mx-auto py-4 px-0 text-sm list-none">
+      <ul class="timeline my-4 mx-0 sm:mx-auto py-4 px-0 text-sm list-none">
         <!-- Item 9 -->
         <li>
           <div class="direction-r">
@@ -449,13 +504,14 @@
     <section id="my_photos"
              class="bg-comet_colour text-snow_white
                     antialiased text-center
-                    w-full py-14 px-10 xl:px-24">
+                    w-full py-14 px-6 lg:px-24">
       <h2 class="pb-6 
-                 text-6xl font-black
+                 text-5xl lg:text-6xl font-black
                  leading-snug text-center">Some Photos</h2>
       <p class="text-xl leading-normal w-full text-center">I enjoy taking pictures from time to time, and here are a few of my favorites.</p>
       <div id="pics_container"
-           class="pics_container px-0 py-4 my-4 mx-auto">
+           class="pics_container px-0 py-4 my-4 mx-auto
+                  flex flex-row w-full md:w-10/12 gap-4 flex-wrap justify-evenly">
       </div>
       <div class="grid place-content-center py-4 w-full ">
         <button type="button" 
@@ -474,7 +530,8 @@
     </section>
     
   </main>
-  <footer class="px-10 lg:px-24 py-8 xl:py-12 bg-mine_shaft">
+  <footer class="py-8 xl:py-12 px-6 lg:px-24
+                 inline-block lg:grid bg-mine_shaft">
     <div class="logo_container h-20 flex justify-self-start">
       <svg width="100%" 
            height="100%" 
@@ -493,7 +550,10 @@
           </g>
       </svg>
     </div>
-    <ul class="links_container flex flex-grow gap-3 text-snow_white">
+    <ul class="links_container 
+               block text-center leading-10 
+               md:flex-row md:justify-evenly md:py-12 md:px-0
+               flex-col flex flex-grow gap-3 text-snow_white">
       <li>
         <a href="#who_i_am"
           class="uppercase font-bold tracking-wide p-2">Who I am</a>
