@@ -95,29 +95,16 @@
           const modalContent = document.createElement('div');
           modalContent.className = 'modal-content bg-black rounded-2xl mt-32 mx-auto p-5 w-3/4 grid place-content-center';
 
-          const closeButton = document.createElement('div');
-          closeButton.className = 'close-button absolute cursor-pointer';
-          
-          const closeButtonImage = document.createElement('img');
-          closeButtonImage.src = `resources/close-button-svgrepo-com.png`;
-          closeButtonImage.setAttribute('width', '50');
-          closeButtonImage.setAttribute('height', '50');
-          closeButtonImage.alt = `Close Image`;
-
-          
           const modalImage = document.createElement('img');
           modalImage.src = `images/image_${imageNames[index]}.jpg`;
           modalImage.alt = `Image ${index}`;
           modalImage.className = 'p-6';
 
-          
-          modalContent.appendChild(closeButton);
-          closeButton.appendChild(closeButtonImage);
           modalContent.appendChild(modalImage);
           modal.appendChild(modalContent);
           
-          // Agregar el evento al botón de cerrar
-          closeButton.addEventListener('click', () => {
+          // Agregar evento para cerrar el modal
+          modal.addEventListener('click', () => {
             modal.remove();
           });
           
@@ -357,7 +344,7 @@
                 <h5 class="mb-2 text-xl font-medium leading-tight text-mine_shaft dark:text-mercury"> Photobook “imágenes de Mi Ciudad” </h5>
                 <p class="mb-4 text-base text-mine_shaft dark:text-mercury"> I successfully compiled photos from Bolívar, a quiet city in the heart of Argentina, into an 84-page project that captures the beauty of simplicity and the city's unique expressions. Through this project, viewers can take a journey around the city and appreciate its charm on every page.<br/>
                   <a class="font-semibold hover:text-mine_shaft dark:hover:text-mercury"
-                     href="https://issuu.com/matoges/docs/bosquejo_libro'">See more...</a>
+                     href="https://issuu.com/matoges/docs/bosquejo_libro">See more...</a>
                 </p>
               </div>
             </div>
