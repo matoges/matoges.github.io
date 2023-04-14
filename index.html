@@ -67,7 +67,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       // Obtener el contenedor de la galería
       const galleryContainer = document.getElementById('pics_container');
-
+  
       // Array con los nombres de archivo de las imágenes
       const imageNames = [];
       for (let i = 1; i <= 100; i++) {
@@ -79,16 +79,56 @@
         const randomIndex = Math.floor(Math.random() * imageNames.length);
         randomIndexes.add(randomIndex);
       }
-
+  
       // Crear elementos de div y agregarlos al contenedor
       randomIndexes.forEach(index => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'image_random shadow-md';
         galleryItem.style.backgroundImage = `url('images/image_${imageNames[index]}.jpg')`;
+        
+        // Agregar evento al hacer click en la imagen
+        galleryItem.addEventListener('click', () => {
+          const modal = document.createElement('div');
+          modal.className = 'modal block';
+          
+          const modalContent = document.createElement('div');
+          modalContent.className = 'modal-content';
+
+          const closeButton = document.createElement('div');
+          closeButton.className = 'close-button absolute cursor-pointer';
+          
+          const closeButtonImage = document.createElement('img');
+          closeButtonImage.src = `resources/close-button-svgrepo-com.png`;
+          closeButtonImage.setAttribute('width', '50');
+          closeButtonImage.setAttribute('height', '50');
+          closeButtonImage.alt = `Close Image`;
+
+          
+          const modalImage = document.createElement('img');
+          modalImage.src = `images/image_${imageNames[index]}.jpg`;
+          modalImage.alt = `Image ${index}`;
+          modalImage.className = 'p-6';
+
+          
+          modalContent.appendChild(closeButton);
+          closeButton.appendChild(closeButtonImage);
+          modalContent.appendChild(modalImage);
+          modal.appendChild(modalContent);
+          
+          // Agregar el evento al botón de cerrar
+          closeButton.addEventListener('click', () => {
+            modal.remove();
+          });
+          
+          // Agregar el modal al documento
+          document.body.appendChild(modal);
+        });
+        
         galleryContainer.appendChild(galleryItem);
       });
     });
   </script>
+  
   <script>
     $(document).ready(function() {
       // Al desplazarse 50px hacia abajo o más, agregar clase "scrolled" a la barra de navegación
