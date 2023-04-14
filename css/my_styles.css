@@ -253,16 +253,6 @@ footer svg {
   background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #000;
-  border-radius: 1rem;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  width: 65%; /* Could be more or less, depending on screen size */
-  display: grid; place-content: center; /* Place image centered in the container */
-}
-
 /*  ____________________________________________ */
 /* Media Queries */
 @media screen and (max-width: 1200px) {
